@@ -21,6 +21,16 @@ pipeline{
             }
         }
 
-        // Add the "Deploy" stage here
+        // Add the "Deploy" stage here 
+        stage('Deploy') {
+           steps {
+		sh  ''' 
+                    oc project lvwmao-greetings 
+                    oc start-build greeting-service  --follow --wait 
+                    '''
+
+             }
+
+        }
     }
 }
